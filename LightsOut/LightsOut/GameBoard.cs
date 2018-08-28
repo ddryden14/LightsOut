@@ -15,7 +15,7 @@ namespace LightsOut
         private Random random;
 
         private bool[,] grid;
-        private int _NumCells = 3;
+        private int _NumCells = 4;
 
         #endregion
 
@@ -64,6 +64,7 @@ namespace LightsOut
 
         public void NewGame()
         {
+            grid = new bool[_NumCells, _NumCells];
             for (int row = 0; row < _NumCells; row++)
             {
                 for (int column = 0; column < _NumCells; column++)
