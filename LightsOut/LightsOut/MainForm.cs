@@ -72,7 +72,7 @@ namespace LightsOut
 
             gameBoard.MakeMove(row, column);
 
-            this.Invalidate();
+            Invalidate();
 
             if(gameBoard.CheckForWin())
             {
@@ -85,7 +85,7 @@ namespace LightsOut
         {
             gameBoard.NewGame();
 
-            this.Invalidate();
+            Invalidate();
         }
 
         private void newToolStripMenuItem_Click(object sender, EventArgs e)
@@ -107,6 +107,15 @@ namespace LightsOut
         {
             AboutForm aboutForm = new AboutForm();
             aboutForm.ShowDialog(this);
+        }
+
+        private void MainForm_Resize(object sender, EventArgs e)
+        {
+            gridLength = Math.Min(Width - (GRIDOFFSET * 2) - 10,
+            Height - (GRIDOFFSET * 2) - 65);
+            cellLength = gridLength / gameBoard.NumCells;
+
+            Invalidate();
         }
     }
 }
